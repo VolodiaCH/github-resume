@@ -15,7 +15,7 @@ export const AppRouter: React.FC = () => {
             path={href}
             element={
               <Suspense fallback={<Loading />}>
-                <Component />
+                {React.createElement(Component)}
               </Suspense>
             }
           />

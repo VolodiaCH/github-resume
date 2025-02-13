@@ -1,5 +1,12 @@
 import { lazy } from 'react';
-import { TRoute } from './types';
+import React, { LazyExoticComponent } from 'react';
+
+export type TRoute = {
+  index: boolean;
+  name: string;
+  href: string;
+  Component: LazyExoticComponent<React.FC<any>>;
+};
 
 export const routes: TRoute[] = [
   {

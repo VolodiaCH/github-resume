@@ -8,7 +8,9 @@ const HomePage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const username = usernameRef.current?.value.trim();
+    // remove all spaces in username
+    const username = usernameRef.current?.value.replace(/\s+/g, '');
+
     navigate(`/${username}`);
   };
 
