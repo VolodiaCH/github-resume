@@ -1,14 +1,14 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React from 'react'
+import { useParams } from 'react-router-dom'
 
 const Home: React.FC = () => {
-    const { username } = useParams();
+  const { username } = useParams()
 
-    return (
-        <div>
-            <h1>{username}'s resume</h1>
-        </div>
-    )
+  return (
+    <div>
+      <h1>{username}'s resume</h1>
+    </div>
+  )
 }
 
-export default Home;
+export default Home

@@ -1,6 +1,6 @@
-import React from "react";
-import { BrowserRouter } from 'react-router-dom';
-import { AppRouter } from './router/Router.tsx';
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { AppRouter } from './router/Router.tsx'
 
 const App: React.FC = () => {
   return (
@@ -10,4 +10,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App;
+export default App
