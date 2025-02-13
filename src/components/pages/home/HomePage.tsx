@@ -1,14 +1,14 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Home: React.FC = () => {
+const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const usernameRef = useRef<HTMLInputElement>();
+  const usernameRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const username = usernameRef.current.value.trim();
+    const username = usernameRef.current?.value.trim();
     navigate(`/${username}`);
   };
 
@@ -17,6 +17,7 @@ const Home: React.FC = () => {
       <h1>Generate GitHub resume</h1>
       <form onSubmit={handleSubmit}>
         <input
+          autoFocus
           placeholder="Enter your GitHub username..."
           type="text"
           ref={usernameRef}
@@ -27,4 +28,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default HomePage;

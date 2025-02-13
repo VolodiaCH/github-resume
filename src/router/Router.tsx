@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from '../components/layout/Layout.tsx';
 import { routes } from './routes.ts';
+import Loading from '../components/common/Loading.tsx';
 
 export const AppRouter: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ export const AppRouter: React.FC = () => {
             index={index}
             path={href}
             element={
-              <Suspense fallback={<div />}>
+              <Suspense fallback={<Loading />}>
                 <Component />
               </Suspense>
             }
