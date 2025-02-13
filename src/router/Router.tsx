@@ -1,7 +1,7 @@
-import React, { Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Layout from '../components/layout/Layout.tsx'
-import { routes } from './routes.ts'
+import React, { Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Layout from '../components/layout/Layout.tsx';
+import { routes } from './routes.ts';
 
 export const AppRouter: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ export const AppRouter: React.FC = () => {
       <Route element={<Layout />}>
         {routes.map(({ index, name, href, Component }) => (
           <Route
-            // key={name}
+            key={name}
             index={index}
             path={href}
             element={
@@ -21,5 +21,5 @@ export const AppRouter: React.FC = () => {
         ))}
       </Route>
     </Routes>
-  )
-}
+  );
+};

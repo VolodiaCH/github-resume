@@ -1,5 +1,5 @@
-import { lazy } from 'react'
-import { TRoute } from './types'
+import { lazy } from 'react';
+import { TRoute } from './types';
 
 export const routes: TRoute[] = [
   {
@@ -14,4 +14,4 @@ export const routes: TRoute[] = [
     href: '/:username',
     Component: lazy(() => import('../components/pages/resume/Resume.tsx')),
   },
-]
+];
