@@ -4,9 +4,10 @@ import UserProfile from './common/UserProfile.tsx';
 import LanguageChart from './common/LanguageChart.tsx';
 import RepoList from './common/RepoList.tsx';
 import DisplayIf from '../../common/DisplayIf.tsx';
+import '../../../styles/resume.scss';
 
 const Resume: React.FC<ResumeProps> = ({ user, repos, navigate }) => (
-  <div>
+  <div className="resume-container">
     <UserProfile user={user} />
     <hr />
 
@@ -18,7 +19,9 @@ const Resume: React.FC<ResumeProps> = ({ user, repos, navigate }) => (
       <hr />
     </DisplayIf>
 
-    <button onClick={() => navigate('/')}>Return</button>
+    <button className="return-btn" onClick={() => navigate('/')}>
+      Return
+    </button>
   </div>
 );
 

@@ -1,7 +1,12 @@
 import React from 'react';
+import '../../styles/common.scss';
 
 const Loading: React.FC = () => {
-  return <h2>Loading...</h2>;
+  return (
+    <div className="loading-container">
+      <div className="spinner" />
+    </div>
+  );
 };
 
 export default Loading;

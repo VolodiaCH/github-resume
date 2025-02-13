@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../../../styles/home.scss';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -8,23 +9,22 @@ const HomePage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // remove all spaces in username
+    // Remove all spaces in the username
     const username = usernameRef.current?.value.replace(/\s+/g, '');
-
-    navigate(`/${username}`);
+    if (username) navigate(`/${username}`);
   };
 
   return (
-    <div>
-      <h1>Generate GitHub resume</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="home-container">
+      <h1>GitHub Resume Generator</h1>
+      <form onSubmit={handleSubmit} className="home-form">
         <input
           autoFocus
-          placeholder="Enter your GitHub username..."
+          placeholder="Enter a GitHub username..."
           type="text"
           ref={usernameRef}
         />
-        <button type="submit">Generate</button>
+        <button type="submit">Generate Resume</button>
       </form>
     </div>
   );

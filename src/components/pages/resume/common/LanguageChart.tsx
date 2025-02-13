@@ -12,7 +12,6 @@ const LanguageChart: FC<LanguageChartProps> = ({ repos }) => {
       if (repo.language) {
         acc[repo.language] = (acc[repo.language] || 0) + 1;
       }
-
       return acc;
     }, {});
 
@@ -23,7 +22,7 @@ const LanguageChart: FC<LanguageChartProps> = ({ repos }) => {
   }, [repos]);
 
   return (
-    <div>
+    <div className="language-chart">
       <h2>Top Languages Used</h2>
       <PieChart width={300} height={300}>
         <Pie

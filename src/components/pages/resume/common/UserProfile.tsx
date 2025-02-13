@@ -2,9 +2,9 @@ import React from 'react';
 import { User } from '../utils';
 
 const UserProfile: React.FC<{ user: User }> = ({ user }) => (
-  <div>
+  <div className="user-profile">
     {user.avatar_url && <img src={user.avatar_url} alt={user.name} />}
-    <div>
+    <div className="user-info">
       <h1>
         <a href={user.html_url} target="_blank" rel="noopener noreferrer">
           {user.name || user.login}

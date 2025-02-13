@@ -6,7 +6,7 @@ const RepoList: React.FC<{ repos: Repo[] }> = ({ repos }) => {
   const loadMore = () => setVisibleCount((prev) => prev + 3);
 
   return (
-    <div>
+    <div className="repo-list">
       <h2>Repositories</h2>
       <ul>
         {repos.slice(0, visibleCount).map((repo) => (
@@ -18,7 +18,9 @@ const RepoList: React.FC<{ repos: Repo[] }> = ({ repos }) => {
         ))}
       </ul>
       {visibleCount < repos.length && (
-        <button onClick={loadMore}>Load More</button>
+        <button className="load-more-btn" onClick={loadMore}>
+          Load More
+        </button>
       )}
     </div>
   );
