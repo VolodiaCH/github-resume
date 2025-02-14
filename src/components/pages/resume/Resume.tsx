@@ -6,23 +6,26 @@ import RepoList from './common/RepoList.tsx';
 import DisplayIf from '../../common/DisplayIf.tsx';
 import '../../../styles/resume.scss';
 
-const Resume: React.FC<ResumeProps> = ({ user, repos, navigate }) => (
-  <div className="resume-container">
-    <UserProfile user={user} />
-    <hr />
+const Resume: React.FC<ResumeProps> = ({ user, repos, navigate }) => {
+  const hasRepos = repos.length !== 0;
 
-    <DisplayIf isTrue={repos.length !== 0}>
-      <LanguageChart repos={repos} />
+  return (
+    <div className="resume-container">
+      <UserProfile user={user} />
       <hr />
 
-      <RepoList repos={repos} />
-      <hr />
-    </DisplayIf>
+      <DisplayIf isTrue={hasRepos}>
+        <LanguageChart repos={repos} />
+        <hr />
+        <RepoList repos={repos} />
+        <hr />
+      </DisplayIf>
 
-    <button className="return-btn" onClick={() => navigate('/')}>
-      Return
-    </button>
-  </div>
-);
+      <button className="return-btn" onClick={() => navigate('/')}>
+        Return
+      </button>
+    </div>
+  );
+};
 
 export default Resume;

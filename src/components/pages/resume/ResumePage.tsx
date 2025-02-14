@@ -11,6 +11,7 @@ import { getTime } from './utils.ts';
 const ResumePage: React.FC = () => {
   const { username } = useParams<{ username: string }>();
   const navigate = useNavigate();
+
   const [user, setUser] = useState(null);
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,6 +22,7 @@ const ResumePage: React.FC = () => {
 
     const loadData = async () => {
       setLoading(true);
+
       try {
         const [userData, reposData] = await Promise.all([
           fetchUser(username),

@@ -1,27 +1,45 @@
 import React, { useState } from 'react';
-import { Repo } from '../utils';
+import DisplayIf from '../../../common/DisplayIf.tsx';
+import { Repo, REPOS_BY_DEFAULT } from '../utils.ts';
 
-const RepoList: React.FC<{ repos: Repo[] }> = ({ repos }) => {
-  const [visibleCount, setVisibleCount] = useState(3);
-  const loadMore = () => setVisibleCount((prev) => prev + 3);
+interface RepoListProps {
+  repos: Repo[];
+}
+
+const RepoList: React.FC<RepoListProps> = ({ repos }) => {
+  const [visibleCount, setVisibleCount] = useState(REPOS_BY_DEFAULT);
+  const loadMore = () => setVisibleCount((prev) => prev + REPOS_BY_DEFAULT);
+
+  const reposToDisplay = repos.slice(0, visibleCount);
+
+  const hasMoreRepos = visibleCount < repos.length;
 
   return (
     <div className="repo-list">
       <h2>Repositories</h2>
+
       <ul>
-        {repos.slice(0, visibleCount).map((repo) => (
-          <li key={repo.name}>
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-              {repo.name}
-            </a>
-          </li>
-        ))}
+        {reposToDisplay.map((repo) => {
+          const updatedDate = new Date(repo.updated_at).toLocaleDateString();
+          return (
+            <li key={repo.name} className="repo-item">
+              <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+                {repo.name}
+              </a>
+
+              <span className="updated-date">{updatedDate}</span>
+            </li>
+          );
+        })}
       </ul>
-      {visibleCount < repos.length && (
-        <button className="load-more-btn" onClick={loadMore}>
-          Load More
-        </button>
-      )}
+
+      <DisplayIf isTrue={hasMoreRepos}>
+        <div className="load-more-container">
+          <button className="load-more-btn" onClick={loadMore}>
+            Load More
+          </button>
+        </div>
+      </DisplayIf>
     </div>
   );
 };

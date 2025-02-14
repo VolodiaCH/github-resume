@@ -1,5 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import { PieChart, Pie, Tooltip, Cell, Legend } from 'recharts';
+import DisplayIf from '../../../common/DisplayIf.tsx';
 import { COLORS, Repo } from '../utils.ts';
 
 interface LanguageChartProps {
@@ -21,23 +22,33 @@ const LanguageChart: FC<LanguageChartProps> = ({ repos }) => {
     }));
   }, [repos]);
 
+  const hasLanguageData = languageData.length !== 0;
+
   return (
     <div className="language-chart">
       <h2>Top Languages Used</h2>
-      <PieChart width={300} height={300}>
-        <Pie
-          data={languageData}
-          dataKey="value"
-          nameKey="name"
-          outerRadius={100}
-        >
-          {languageData.map((_, index) => (
-            <Cell key={index} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
-        <Legend />
-      </PieChart>
+
+      <DisplayIf isTrue={!hasLanguageData}>
+        <span>No language data.</span>
+      </DisplayIf>
+
+      <DisplayIf isTrue={hasLanguageData}>
+        <PieChart width={300} height={300}>
+          <Pie
+            data={languageData}
+            dataKey="value"
+            nameKey="name"
+            outerRadius={100}
+          >
+            {languageData.map((_, index) => (
+              <Cell key={index} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+
+          <Tooltip />
+          <Legend />
+        </PieChart>
+      </DisplayIf>
     </div>
   );
 };

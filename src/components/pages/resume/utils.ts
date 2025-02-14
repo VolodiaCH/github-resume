@@ -8,6 +8,7 @@ export interface User {
   blog?: string;
 }
 
+export const REPOS_BY_DEFAULT = 5;
 export interface Repo {
   name: string;
   html_url: string;
